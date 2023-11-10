@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View All Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0501dad531.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+
+<body style="background-color:#1b203d;">
+    <h1> <a href="{% url 'test' %}">V-Softech </a> </h1>
+
+    <h1 style="color: red; text-align: center;" >View All Employee</h1>
+    {% if messages %}
+{% for message in messages %}
+    {% if message.tags == "success" %}
+        <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            <strong>{{ message }}</strong>
+        </div>
+    {% else %}
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            <strong>{{ message }}</strong>
+        </div>
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+
+    <table class="table table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th class="table-danger">SR NO</th>
+                <th class="table-danger">First Name</th>
+                <th class="table-danger"> Last Name </th>
+                <th class="table-danger"> Email Address</th>
+                <th class="table-danger"> Joining_By</th>
+                <th class="table-danger">  Status </th>
+                <th class="table-danger">Actions</th>
+                <th class="table-danger"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr></tr>
+                <td class="table-info">{{ product.id }}</td>
+                <td class="table-info">{{ product.first_name }}</td>
+                <td class="table-info">{{ product.last_name }}</td>
+                <td class="table-info">{{ product.email }}</td>
+                <td class="table-info">{{ product.joining }}</td>
+                <td class="table-info">{{ product.status }}</td>
+                <td class="table-info"><a href="{% url 'update_emp' product.pk %}"  <i class="fa fa-pencil-square" aria-hidden="true"></i> </a></td>
+                <td class="table-info"><a href="{% url 'delete_emp' product.pk %}" <i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+
+

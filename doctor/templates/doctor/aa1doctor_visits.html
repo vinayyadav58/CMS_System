@@ -1,0 +1,26 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<body style=" background-color: #1b203d;">
+  
+
+<table class="table table table-hover">
+    <thead class="table-light">
+      <tr>
+        <th class="table-danger">Sr no</th>
+        <th class="table-danger">Total Appointments Done</th>
+        <th class="table-danger">Employee  Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in visits_data %}
+        <tr>
+          <td class="table-info">{{ forloop.counter }}</td>
+          <td class="table-info">{{ data.total_appointments }}</td>
+          <td class="table-info">{{ doc }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+</body>
